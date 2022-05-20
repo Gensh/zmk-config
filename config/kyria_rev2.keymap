@@ -6,25 +6,84 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#define DEFAULT 0
+#define NAV 1
+#define NUM 2
 
 / {
+	macros {
+        nav_copy: nav_copy {
+            label = "nav_copy";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp C>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        nav_paste: nav_paste {
+            label = "nav_paste";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp V>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        nav_sel_home: nav_sel_home {
+            label = "nav_sel_home";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LSHFT>
+                , <&macro_tap &kp HOME>
+                , <&macro_release &kp LSHFT>
+                ;
+        };
+        nav_sel_end: nav_sel_end {
+            label = "nav_sel_end";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LSHFT>
+                , <&macro_tap &kp END>
+                , <&macro_release &kp LSHFT>
+                ;
+        };
+    };
+
 	keymap {
 		compatible = "zmk,keymap";
 
 		default_layer {
-// ---------------------------------------------------------------------------------------------------------------------------------
-// |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   |   \  |
-// |  TAB  |  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |   '  |
-// | SHIFT |  Z  |  X  |  C   |  V   |  B   | L SHIFT | L SHIFT |  | L SHIFT | L SHIFT |  N   |  M    |  ,    |  .   |   /   | CTRL |
-//                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
 			bindings = <
-	&kp ESC   &kp Q &kp W &kp E &kp R &kp T                                                &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSLH
-	&kp TAB   &kp A &kp S &kp D &kp F &kp G                                                &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-	&kp LSHFT &kp Z &kp X &kp C &kp V &kp B &kp LSHFT &kp LSHFT        &kp LSHFT &kp LSHFT &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp RCTRL
-	                 &kp LGUI &kp DEL &kp RET &kp SPACE &kp ESC        &kp RET  &kp SPACE  &kp TAB &kp BSPC &kp RALT
+	&kp GRAVE &kp Q &kp W &kp E &kp R &kp T                                              &kp Y &kp U  &kp I     &kp O   &kp P    &kp MINUS
+	&kp LCTRL &kp A &kp S &kp D &kp F &kp G                                              &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
+	&kp LSHFT &kp Z &kp X &kp C &kp V &kp B     &kp ESC &kp PSCRN    &kp CAPS  &none     &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp LSHFT
+	                 &kp LGUI &kp DEL &kp SPACE &kp RET &kp TAB      &kp RALT  &tog NAV  &kp BSPC &tog NUM &kp RGUI
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+		};
+
+		nav_layer {
+			bindings = <
+	&none     &none &none &nav_copy &nav_paste &kp N3                                          &nav_sel_home &kp PG_UP  &kp UP   &kp PG_DN &nav_sel_end &none
+	&kp LCTRL &kp A &kp S &kp ESC   &kp RET    &kp N1                                          &kp HOME      &kp LEFT   &kp DOWN &kp RIGHT &kp END      &none
+	&kp LSHFT &none &kp D &kp Z     &kp X      &kp N2 &kp ESC &kp PSCRN    &kp CAPS  &kp LSHFT &none         &none      &none    &none     &none        &kp LSHFT
+	                 &kp LGUI &kp DEL &kp SPACE &kp RET &kp TAB            &kp RALT  &tog DEFAULT  &kp BSPC &tog NUM &kp RGUI
+			>;
+		};
+
+		num_layer {
+			bindings = <
+	&kp F1    &kp F2    &kp F3    &kp F4   &kp F5   &kp F6                                                 &kp F7 &kp F8     &kp F9    &kp F10 &kp F11  &kp F12
+	&kp LCTRL &kp N1    &kp N2    &kp N3   &kp N4   &kp N5                                                 &kp N6 &kp N7     &kp N8    &kp N9  &kp N0   &kp EQUAL
+	&kp LSHFT &kp GRAVE &kp COLON &kp LBKT &kp RBKT &kp BACKSLASH &kp ESC &kp PSCRN    &kp CAPS  &kp LSHFT &none  &kp MINUS  &kp COMMA &kp DOT &kp FSLH &kp LSHFT
+	                                   &kp LGUI &kp DEL &kp SPACE &kp RET &kp TAB      &kp RALT  &tog NAV  &kp BSPC &tog NUM &kp RGUI
+			>;
 		};
 	};
 };
