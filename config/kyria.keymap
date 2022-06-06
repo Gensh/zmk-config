@@ -62,7 +62,7 @@
 	&kp GRAVE &kp Q &kp W &kp E &kp R &kp T                                              &kp Y &kp U  &kp I     &kp O   &kp P    &kp MINUS
 	&kp LCTRL &kp A &kp S &kp D &kp F &kp G                                              &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
 	&kp LSHFT &kp Z &kp X &kp C &kp V &kp B     &kp ESC &kp PSCRN    &kp CAPS  &none     &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp LSHFT
-	                 &kp LGUI &kp DEL &kp SPACE &kp RET &kp LALT      &kp TAB  &tog NAV  &kp BSPC &tog NUM &kp RGUI
+	                 &kp LGUI &kp DEL &kp SPACE &kp RET &kp LALT      &kp TAB  &to NAV  &kp BSPC &to NUM &kp RGUI
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -73,7 +73,7 @@
 	&none     &none &none &nav_copy &nav_paste &kp N3                                          &nav_sel_home &kp PG_UP  &kp UP   &kp PG_DN &nav_sel_end &none
 	&kp LCTRL &kp A &kp S &kp ESC   &kp RET    &kp N1                                          &kp HOME      &kp LEFT   &kp DOWN &kp RIGHT &kp END      &none
 	&kp LSHFT &none &kp D &kp Z     &kp X      &kp N2 &kp ESC &kp PSCRN    &kp CAPS  &kp LSHFT &none         &none      &none    &none     &none        &kp LSHFT
-	                 &kp LGUI &kp DEL &kp SPACE &kp RET &kp LALT            &kp TAB  &tog DFT  &kp BSPC &tog NUM &kp RGUI
+	                 &kp LGUI &kp DEL &kp SPACE &kp RET &kp LALT            &kp TAB  &to DFT  &kp BSPC &to NUM &kp RGUI
 			>;
 		};
 
@@ -82,7 +82,7 @@
 	&kp F1    &kp F2    &kp F3    &kp F4   &kp F5   &kp F6                                                 &kp F7 &kp F8     &kp F9    &kp F10 &kp F11  &kp F12
 	&kp LCTRL &kp N1    &kp N2    &kp N3   &kp N4   &kp N5                                                 &kp N6 &kp N7     &kp N8    &kp N9  &kp N0   &kp EQUAL
 	&kp LSHFT &kp GRAVE &kp COLON &kp LBKT &kp RBKT &kp BACKSLASH &kp ESC &kp PSCRN    &kp CAPS  &kp LSHFT &none  &kp MINUS  &kp COMMA &kp DOT &kp FSLH &kp LSHFT
-	                                   &kp LGUI &kp DEL &kp SPACE &kp RET &kp LALT      &kp TAB  &tog NAV  &kp BSPC &tog DFT &kp RGUI
+	                                   &kp LGUI &kp DEL &kp SPACE &kp RET &kp LALT      &kp TAB  &to NAV  &kp BSPC &to DFT &kp RGUI
 			>;
 		};
 	};
